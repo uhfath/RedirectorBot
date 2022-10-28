@@ -27,7 +27,7 @@ namespace RedirectorBot
 
 		public Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
 		{
-			var source = update.Message.MessageId;
+			var source = update.Message.Chat.Id;
 			if (_botConfig.Value.Routes.TryGetValue(source.ToString(), out var destinations))
 			{
 				var tasks = destinations
